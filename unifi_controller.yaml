@@ -1,25 +1,26 @@
 ---
-version: "2"
+version: "2.1"
 services:
   unifi-controller:
-    image: linuxserver/unifi-controller:6.5.55
+    image: lscr.io/linuxserver/unifi-controller:7.1.66
     container_name: unifi-controller
-    restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
-      - MEM_LIMIT=1024M #optional
+      - MEM_LIMIT=1024 #optional
+      - MEM_STARTUP=1024 #optional
     volumes:
-      -  unifi_controller_data:/config
+      - unifi_controller_data:/config
     ports:
-      - 10001:10001/udp # Required for AP discovery
-      - 8880:8880/tcp # Unifi guest portal HTTP redirect port
-      - 8843:8843/tcp # Unifi guest portal HTTPS redirect port
-      - 8443:8443/tcp # Unifi web admin port
-      - 8080:8080/tcp # Required for device communication
-      - 6789:6789/tcp # For mobile throughput test
-      - 5514:5514/tcp # Remote syslog port
-      - 3478:3478/udp # Unifi STUN port
-      - 1900:1900/udp # Required for Make controller discoverable on L2 network option
+      - 8443:8443
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 1900:1900/udp #optional
+      - 8843:8843 #optional
+      - 8880:8880 #optional
+      - 6789:6789 #optional
+      - 5514:5514/udp #optional
+    restart: unless-stopped
 volumes:
   unifi_controller_data:
