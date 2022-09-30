@@ -2,7 +2,7 @@
 version: "2.1"
 services:
   unifi-controller:
-    image: lscr.io/linuxserver/unifi-controller:7.1.66
+    image: lscr.io/linuxserver/unifi-controller:7.2.94
     container_name: unifi-controller
     environment:
       - PUID=1000
@@ -10,7 +10,7 @@ services:
       - MEM_LIMIT=1024 #optional
       - MEM_STARTUP=1024 #optional
     volumes:
-      - unifi-controller-data:/config
+      - data:/config
     ports:
       - 8443:8443
       - 3478:3478/udp
@@ -23,4 +23,4 @@ services:
       - 5514:5514/udp #optional
     restart: unless-stopped
 volumes:
-  unifi-controller-data:
+  data:
