@@ -2,7 +2,7 @@
 version: "2.4"
 services:
   unifi-controller:
-    image: lscr.io/linuxserver/unifi-controller:7.4.162
+    image: lscr.io/linuxserver/unifi-controller:7.5.174
     container_name: unifi-controller
     environment:
       - PUID=1000
