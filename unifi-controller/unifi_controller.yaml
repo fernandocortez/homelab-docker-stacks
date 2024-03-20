@@ -2,7 +2,7 @@
 version: "2.4"
 services:
   unifi-network-application:
-    image: lscr.io/linuxserver/unifi-network-application:8.0.28
+    image: lscr.io/linuxserver/unifi-network-application:8.1.113
     container_name: unifi-network-application
     environment:
       - PUID=1000
@@ -33,7 +33,7 @@ services:
       unifi:
     restart: unless-stopped
   unifi-db:
-    image: docker.io/mongo:4.4.28
+    image: docker.io/mongo:4.4.29
     container_name: unifi-db
     volumes:
       - db:/data/db
