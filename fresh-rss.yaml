@@ -1,17 +1,21 @@
 ---
-version: "2.4"
-services:
-  freshrss:
-    image: lscr.io/linuxserver/freshrss:1.26.3
-    container_name: freshrss
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/New_York
-    volumes:
-      - data:/config
-    ports:
-      - 13842:80
-    restart: unless-stopped
 volumes:
   data:
+  extensions:
+
+services:
+  freshrss:
+    image: freshrss/freshrss:1.26.3
+    container_name: freshrss
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+    volumes:
+      - data:/var/www/FreshRSS/data
+      - extensions:/var/www/FreshRSS/extensions
+    ports:
+      - 13842:80
+    environment:
+      TZ: America/New_York
+      CRON_MIN: '2,32'
