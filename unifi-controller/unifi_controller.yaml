@@ -1,8 +1,7 @@
 ---
-version: "2.4"
 services:
   unifi-network-application:
-    image: lscr.io/linuxserver/unifi-network-application:9.0.114
+    image: lscr.io/linuxserver/unifi-network-application:9.2.87
     container_name: unifi-network-application
     environment:
       - PUID=1000
@@ -37,7 +36,7 @@ services:
     container_name: unifi-db
     volumes:
       - db:/data/db
-      - /home/administrador/unifi-controller/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - /home/unifiadmin/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       unifi:
     restart: unless-stopped
