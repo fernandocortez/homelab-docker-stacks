@@ -3,9 +3,6 @@ volumes:
   data:
   extensions:
 
-networks:
-  freshrss:
-
 services:
   freshrss:
     image: freshrss/freshrss:1.27.0
@@ -17,8 +14,6 @@ services:
     volumes:
       - data:/var/www/FreshRSS/data
       - extensions:/var/www/FreshRSS/extensions
-    networks:
-      freshrss:
     ports:
       - 13842:80
     environment:
