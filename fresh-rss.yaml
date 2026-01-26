@@ -12,7 +12,7 @@ networks:
 
 services:
   freshrss:
-    image: freshrss/freshrss:1.28.0
+    image: freshrss/freshrss:1.28.1
     container_name: freshrss
     restart: unless-stopped
     logging:
