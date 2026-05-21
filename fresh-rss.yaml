@@ -1,30 +1,30 @@
 ---
 volumes:
-  data:
-    name: freshrss_data
-  extensions:
-    name: freshrss_extensions
+    data:
+        name: freshrss_data
+    extensions:
+        name: freshrss_extensions
 
 networks:
-  freshrss_default:
-    name: freshrss_default
-    driver: bridge
+    freshrss_default:
+        name: freshrss_default
+        driver: bridge
 
 services:
-  freshrss:
-    image: freshrss/freshrss:1.29.0
-    container_name: freshrss
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: 10m
-    volumes:
-      - data:/var/www/FreshRSS/data
-      - extensions:/var/www/FreshRSS/extensions
-    ports:
-      - 13842:80
-    environment:
-      TZ: America/New_York
-      CRON_MIN: '2,32'
-    networks:
-      - freshrss_default
+    freshrss:
+        image: freshrss/freshrss:1.29.1
+        container_name: freshrss
+        restart: unless-stopped
+        logging:
+            options:
+                max-size: 10m
+        volumes:
+            - data:/var/www/FreshRSS/data
+            - extensions:/var/www/FreshRSS/extensions
+        ports:
+            - 13842:80
+        environment:
+            TZ: America/New_York
+            CRON_MIN: "2,32"
+        networks:
+            - freshrss_default
